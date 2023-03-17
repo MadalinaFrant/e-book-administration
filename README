@@ -1,0 +1,213 @@
+Tema 1 POO - Frant Madalina 324CB
+
+	interfata IPublishingArtifact:
+
+Se declara metoda Publish ce va fi implementata in clasele Book, 
+EditorialGroup si PublishingBrand.
+
+
+	clasa Book:
+
+In clasa Book sunt implementate: constructor cu parametri (toate atributele
+mai putin lista de autori), getteri pentru toate atributele, setter pentru 
+lista de autori.
+
+Metoda addAuthor adauga autorul primit ca parametru in lista de autori a 
+cartii primite ca parametru (daca aceasta carte nu are inca niciun autor se 
+creeaza un vector nou cu primul element autorul dat, altfel se adauga autorul
+la sfarsitul vectorului).
+
+Metoda printBook intoarce un String cu toate atributele cartii (in format xml).
+Aceasta metoda primeste ca parametru un numar de taburi pentru a putea fi apelata
+si in cadrul functiilor Publish din clasele EditorialGroup si PublishingBrand.
+
+Metoda Publish intoarce un String cu toate atributele cartii, apeland functia 
+printBook cu parametrul tabs = 1.
+
+Metoda getBookForID cauta in lista de carti data ca parametru cartea cu ID-ul dat,
+returnand aceasta carte daca exista, respectiv null.
+
+Metoda readBooks intoarce cartile initializate astfel: se citeste din fisier linie 
+cu linie (cat timp exista linii), se definesc atributele separate prin "###" (in cazul
+ultimului atribut trebuie luata toata linia deoarece dupa acesta nu mai exista "###",
+astfel acest ultim atribut va contine si separatorul "###", de aceea el va fi substring(3),
+sarind peste primele 3 caractere). Apoi se adauga in vectorul ce va fi returnat noua 
+carte construita cu aceste atribute.
+
+Metoda readBooksAuthors adauga un autor in lista de autori a cartii corespunzatoare:
+se initializeaza books folosind readBooks si authors folosind readAuthors, se citesc 
+din fisier (asemenea metodei anterioare) ID-ul cartii si cel al autorului, se adauga 
+folosind metoda addAuthor autorul cu ID-ul corespunzator (intors de metoda getAuthorForID)
+in lista de autori a cartii cu ID-ul dat (intoarsa de metoda getBookForID).
+
+Metoda bookExistsInArray verifica existenta in lista de carti data ca parametru a cartii
+cu ID-ul dat, returnand true daca exista, false daca nu.
+
+Metoda addBookToArray adauga in lista de carti data ca parametru cartea data, in cazul 
+in care aceasta nu exista deja in vector.
+
+
+	clasa Author:
+
+In clasa Author sunt implementate: constructor cu parametri, getteri pentru toate
+atributele, metoda toString ce intoarce un String compus din firstName si lastName.
+
+Metoda getAuthorForID cauta in lista de autori data ca parametru autorul cu ID-ul dat,
+returnand aceast autor daca exista, respectiv null.
+
+Metoda readAuthors intoarce autorii initializati, asemenea metodei readBooks din 
+clasa Book.
+
+
+	clasa Language:
+
+In clasa Language sunt implementate: constructor cu parametri, getteri pentru toate
+atributele, metoda toString ce intoarce un String compus din codul si numele limbii.
+
+Metoda getLanguageForID cauta in lista de limbi data ca parametru limba cu ID-ul dat,
+returnand aceasta limba daca exista, respectiv null.
+
+Metoda readLanguages intoarce limbile initializate, asemenea metodei readBooks din 
+clasa Book.
+
+Metodele languageExistsInArray si addLanguageToArray sunt asemenea celor din clasa Book
+(bookExistsInArray si addBookToArray).
+
+
+	clasa Country:
+
+In clasa Country sunt implementate: constructor cu parametri, getteri pentru toate 
+atributele, metoda toString ce intoarce un String compus din codul tarii.
+
+Metoda getCountryForID cauta in lista de tari data ca parametru tara cu ID-ul dat,
+returnand aceasta tara daca exista, respectiv null.
+
+Metoda readCountries intoarce tarile initializate, asemenea metodei readBooks din 
+clasa Book.
+
+Metoda addCountriesToArray adauga, adica concateneaza vectorul tarilor primite ca al 
+doilea parametru la vectorul tarilor primit ca prim parametru.
+
+
+	clasa EditorialGroup:
+
+In clasa EditorialGroup sunt implementate: constructor cu parametri (toate atributele
+mai putin lista de carti), getteri pentru toate atributele, setter pentru lista de
+carti.
+
+Metoda addBook adauga cartea primita ca parametru in lista de carti a 
+grupului primit ca parametru asemenea metodei addAuthor din clasa Book.
+
+Metoda Publish intoarce un String cu toate atributele grupului, apeland functia 
+printBook cu parametrul tabs = 3 pentru fiecare carte din lista de carti a 
+grupului.
+
+Metoda getGroupForID cauta in lista de grupuri data ca parametru grupul cu ID-ul dat,
+returnand acest grup daca exista, respectiv null.
+
+Metoda readEditorialGroups intoarce grupurile initializate, asemenea metodei readBooks din 
+clasa Book.
+
+Metoda readEditorialGroupsBooks adauga o carte in lista de carti a grupului corespunzator:
+se initializeaza groups folosind readEditorialGroups (cartile deja initializate sunt date 
+ca parametru), se citesc din fisier (asemenea metodei anterioare) ID-ul grupului si cel al
+cartii, se adauga folosind metoda addBook cartea cu ID-ul corespunzator (intoarsa de metoda 
+getBookForID) in lista de carti a grupului cu ID-ul dat (intors de metoda getGroupForID).
+
+
+	clasa PublishingBrand:
+
+In clasa PublishingBrand sunt implementate: constructor cu parametri (toate atributele
+mai putin lista de carti), getteri pentru toate atributele, setter pentru lista de
+carti.
+
+Metoda addBook adauga cartea primita ca parametru in lista de carti a 
+brandului primit ca parametru asemenea metodei addAuthor din clasa Book.
+
+Metoda Publish intoarce un String cu toate atributele brandului, apeland functia 
+printBook cu parametrul tabs = 3 pentru fiecare carte din lista de carti a 
+brandului.
+
+Metoda getBrandForID cauta in lista de branduri data ca parametru brandul cu ID-ul dat,
+returnand acest brand daca exista, respectiv null.
+
+Metoda readPublishingBrands intoarce brandurile initializate, asemenea metodei readBooks din 
+clasa Book.
+
+Metoda readPublishingBrandsBooks adauga o carte in lista de carti a brandului corespunzator:
+se initializeaza brands folosind readPublishingBrands (cartile deja initializate sunt date 
+ca parametru), se citesc din fisier (asemenea metodei anterioare) ID-ul brandului si cel al
+cartii, se adauga folosind metoda addBook cartea cu ID-ul corespunzator (intoarsa de metoda 
+getBookForID) in lista de carti a brandului cu ID-ul dat (intors de metoda getBrandForID).
+
+
+	clasa PublishingRetailer:
+
+In clasa PublishingRetailer sunt implementate: constructor cu parametri (toate atributele
+mai putin lista de carti si cea de tari), getteri pentru toate atributele, setteri pentru
+lista de carti si cea de tari, metoda toString ce intoarce un String compus din atributele
+retailerului.
+
+Metoda addArtifact adauga artifactul primit ca parametru in lista de artifacts a 
+retailerului primit ca parametru asemenea metodei addAuthor din clasa Book.
+
+Metoda addCountry adauga tara primita ca parametru in lista de tari a 
+retailerului primit ca parametru asemenea metodei addAuthor din clasa Book.
+
+Metoda getRetailerForID cauta in lista de retaileri data ca parametru retailerul cu ID-ul
+dat, returnand acest retailer daca exista, respectiv null.
+
+Metoda readPublishingRetailers intoarce retailerii initializati, asemenea metodei readBooks
+din clasa Book.
+
+Metoda readPublishingRetailersCountries adauga o tara in lista de tari a retailerului 
+corespunzator: se initializeaza retailers folosind readPublishingRetailers si countries 
+folosind readCountries, se citesc din fisier (asemenea metodei anterioare) ID-ul retailerului
+si cel al tarii, se adauga folosind metoda addCountry tara cu ID-ul corespunzator (intoarsa de
+metoda getCountryForID) in lista de tari a retailerului cu ID-ul dat (intors de metoda
+getRetailerForID).
+
+Metoda readPublishingRetailersBooks adauga o carte in lista de carti a retailerului 
+corespunzator: retailerii initializati si cartile initializate sunt primite ca parametri, 
+se citesc din fisier (asemenea metodei anterioare) ID-ul retailerului si cel al
+cartii, se adauga folosind metoda addArtifact cartea cu ID-ul corespunzator (intoarsa de metoda 
+getBookForID) in lista de carti a retailerului cu ID-ul dat (intors de metoda getRetailerForID).
+
+Metodele readPublishingRetailersGroups si readPublishingRetailersBrands se realizeaza
+asemanator metodei readPublishingRetailersBooks.
+
+Metoda initializeRetailers intoarce retailerii initializati apeland, pe rand, metodele 
+implementate anterior.
+
+
+	clasa Administation:
+
+Metoda getNrOfLines intoarce numarul de linii din fisierul dat ca parametru, 
+fara linia de header.
+
+Metoda getBooksForPublishingRetailerID intoarce toate cartile unui retailer pentru ID-ul dat.
+Pentru a putea face acest lucru, se iau toate cartile din lista artifacts a retailerului 
+corespunzator ID-ului dat, deci se iau atat cartile propriu-zise (de tip Book), cat si cele 
+din lista de carti a EditorialGroup si PublishingBrand. Aceste carti vor fi adaugate in 
+vectorul ce va fi returnat folosind metoda addBookToArray.
+
+Metoda getLanguagesForPublishingRetailerID intoarce lista de limbi pentru ID-ul retailerului
+astfel: pentru toate cartile respective retailerului cu ID-ul dat ca parametru (obtinute 
+apeland metoda getBooksForPublishingRetailerID) se adauga in vectorul de limbi (utilizand 
+addLanguageToArray) ce va fi returnat limba obtinuta folosind getLanguageForID care primeste
+ca parametri lista initializata a limbilor (languagesArray) si ID-ul cartii respective iteratiei. 
+
+Metoda getCountriesForBookID intoarce tarile in care a ajuns cartea cu ID-ul dat. Pentru a 
+realiza acest lucru, se itereaza prin toti retailerii si pentru fiecare carte a acestora 
+(din lista de carti obtinuta apeland getBooksForPublishingRetailerID), in cazul unei carti 
+cu ID-ul dat ca parametru, se adauga tarile specifice retailerului in lista de tari ce va fi 
+returnata (utilizand addCountriesToArray).
+
+Metoda getCommonBooksForRetailerIDs intoarce cartile comune dintre retailerii cu ID-urile date:
+se obtin listele de carti apeland getBooksForPublishingRetailerID pentru fiecare ID, apoi se 
+trece printr-o lista, verificand la fiecare element daca aceasta exista si in cealalta lista,
+daca da adaugand-o la lista cartilor comune (folosind addBookToArray).
+
+Metoda getAllBooksForRetailerIDs intoarce toate cartile retailerilor cu ID-urile date:
+se obtin listele de carti apeland getBooksForPublishingRetailerID pentru fiecare ID, apoi se 
+trece prin fiecare lista, adaugand fiecare carte la lista cartilor (folosind addBookToArray).
