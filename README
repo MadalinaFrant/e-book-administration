@@ -1,5 +1,3 @@
-Tema 1 POO - Frant Madalina 324CB
-
 	interfata IPublishingArtifact:
 
 Se declara metoda Publish ce va fi implementata in clasele Book, 
